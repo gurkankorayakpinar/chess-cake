@@ -1,16 +1,18 @@
 # Chess cake
 
-- Bu projede, FEN kodu verilen bir oyundaki en iyi hamle hesaplanmakta olup; ayrıca, konum puanı ve önde olan tarafın kazanç olasılığı gösterilmektedir.
+- Bu projede, FEN kodu verilen bir oyundaki en iyi hamle hesaplanmakta olup; ayrıca, konum puanı ve önde olan tarafın kazanç olasılığı da gösterilmektedir.
 
 ***
 
-- Projenin çalıştırılabilmesi için; Stockfish programının indirilmesi, "stockfish" klasörünün proje klasörü içerisine eklenmesi ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir. Ayrıca, FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
+- Projenin çalıştırılabilmesi için; Stockfish programının proje klasörü içerisinde yer alması, klasör isminin "stockfish" ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
 
-- FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu gösterir. Mesela "b" harfi, hamle sırasının siyah taşlarda olduğu anlamına gelir. Dolayısıyla, sorgulama yapılabilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
+- FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu ("white" veya "black") gösterir. Dolayısıyla, FEN kodunun incelenebilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
+
+- FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
 
 - Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
 
-- Mat olan konumlar için, sadece "Konum" çıktısının alınması sağlanmıştır.
+- Mat olan konumlar için, sadece "Konum" çıktısının alınması sağlanmış olup; "Kazanma olasılığı" gibi diğer çıktıların alınması engellenmiştir.
 
 ***
 
@@ -20,7 +22,7 @@
 
 - Standart notasyondan farklı olarak, mesela "e4" yerine "e2e4" şeklinde çıktılar alınmaktadır.
 
-- Hamle hesabı esnasında, "en passant" ve "rok" gibi özel hamleler de algılanabilmektedir.
+- Hesaplama esnasında, "en passant" ve "rok" gibi özel hamleler de algılanabilmektedir.
 
 ***
 
@@ -28,19 +30,19 @@
 
 - Hesaplama derinliği "20" olarak belirlenmiştir.
 
-- Santipiyon değeri 100'e bölünerek "konum puanı" elde edilmektedir. (Mesela "300 santipiyon = 3 puan" gibi.)
+- Santipiyon değeri 100'e bölünerek "konum puanı" elde edilmektedir.
 
 - Sonucun "eksi" çıkması, siyah taşların avantajlı olduğunu gösterir.
 
-- Kaçınılmaz mat (unavoidable mat) konumlarında, mesela "4 hamlede mat" gibi çıktılar alınmaktadır ve bu sonuçlarda "negatif sayı" yoktur.
+- Kaçınılmaz mat (unavoidable mat) konumlarında, mesela "4 hamlede mat!" gibi çıktılar alınmaktadır ve bu sonuçlarda "negatif sayı" yoktur.
 
 ***
 
 # 3. Kazanç olasılığı
 
-- Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır. Konum puanı ne kadar yüksek ise, payda da o kadar küçülür ve kazanma olasılığı da o oranda 1'e (yani %100'e) yaklaşır.
+- Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır.
 
-- Gerçekçi bir olasılık hesabı için "k" sabiti "0.4" kabul edilmiştir.
+- Gerçekçi bir olasılık hesabı için, sigmoid büyüme eğrisindeki "k" sabiti "0.4" olarak ayarlanmıştır.
 
 ***
 ***
@@ -48,6 +50,6 @@
 
 # Düzeltilecek veya eklenecek özellikler
 
-- Kaçınılmaz mat (unavoidable mat) konumlarında hangi tarafın önde olduğu gösterilecek.
+- Kaçınılmaz mat (unavoidable mat) konumlarında, hangi tarafın önde olduğu gösterilecek.
 
 - Berabere biten oyunlar için farklı bir çıktı alınması sağlanacak.
