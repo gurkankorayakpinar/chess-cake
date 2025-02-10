@@ -20,6 +20,8 @@
 
 - Hamle hesabı esnasında, "en passant" ve "rok" gibi özel hamleler de algılanabilmektedir.
 
+- Mat olan konumlar için, sadece "Konum" çıktısının alınması sağlanmıştır.
+
 ***
 
 # 2. Konum puanı
@@ -39,10 +41,6 @@
 - Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır. Konum puanı ne kadar yüksek ise, payda da o kadar küçülür ve kazanma olasılığı da o oranda 1'e (yani %100'e) yaklaşır.
 
 - Gerçekçi bir olasılık hesabı için "k" sabiti "0.4" kabul edilmiştir.
-
-***
-
-- Eğer oyunda mat olduysa, sadece "Konum" çıktısının alınması sağlanmıştır.
 
 ***
 ***
