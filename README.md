@@ -26,7 +26,7 @@
 
 - Hesaplama derinliği "20" olarak belirlenmiştir.
 
-- Santipiyon değeri 100'e bölünerek konum puanına ulaşılır. (Örnek: 300 santipiyon = 3 puan)
+- Santipiyon değeri 100'e bölünerek "konum puanı" elde edilmektedir. (Mesela "300 santipiyon = 3 puan" gibi.)
 
 - Sonucun "eksi" çıkması, siyah taşların avantajlı olduğunu gösterir.
 
@@ -37,6 +37,8 @@
 # 3. Kazanç olasılığı
 
 - Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır. Konum puanı ne kadar yüksek ise, payda da o kadar küçülür ve kazanma olasılığı da o oranda 1'e (yani %100'e) yaklaşır.
+
+- Gerçekçi bir olasılık hesabı için "k" sabiti "0.4" kabul edilmiştir.
 
 ***
 
