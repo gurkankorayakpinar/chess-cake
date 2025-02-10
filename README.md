@@ -1,6 +1,6 @@
 # Chess cake
 
-- Bu projede, FEN kodu verilen bir oyundaki "en iyi hamle" hesaplanmakta ve "konum puanı" gösterilmektedir.
+- Bu projede, FEN kodu verilen bir oyundaki en iyi hamle hesaplanmakta olup; ayrıca, konum puanı ve önde olan tarafın kazanç olasılığı gösterilmektedir.
 
 ***
 
@@ -18,7 +18,7 @@
 
 - Standart notasyondan farklı olarak, mesela "e4" yerine "e2e4" şeklinde çıktılar alınmaktadır.
 
-- Hesaplama esnasında, "en passant" ve "rok" gibi özel hamleler de algılanabilmektedir.
+- Hamle hesabı esnasında, "en passant" ve "rok" gibi özel hamleler de algılanabilmektedir.
 
 ***
 
@@ -26,6 +26,28 @@
 
 - Hesaplama derinliği "20" olarak belirlenmiştir.
 
+- Santipiyon değeri 100'e bölünerek konum puanına ulaşılır. (Örnek: 300 santipiyon = 3 puan)
+
 - Sonucun "eksi" çıkması, siyah taşların avantajlı olduğunu gösterir.
 
 - Kaçınılmaz mat (unavoidable mat) konumlarında, mesela "4 hamlede mat" gibi çıktılar alınmaktadır ve bu sonuçlarda "negatif sayı" yoktur.
+
+***
+
+# 3. Kazanç olasılığı
+
+- Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır. Konum puanı ne kadar yüksek ise, payda da o kadar küçülür ve kazanma olasılığı da o oranda 1'e (yani %100'e) yaklaşır.
+
+***
+
+- Eğer oyunda mat olduysa, sadece "Konum" çıktısının alınması sağlanmıştır.
+
+***
+***
+***
+
+# Düzeltilecek veya eklenecek özellikler
+
+- Kaçınılmaz mat (unavoidable mat) konumlarında hangi tarafın önde olduğu gösterilecek.
+
+- Berabere biten oyunlar için farklı bir çıktı alınması sağlanacak.
