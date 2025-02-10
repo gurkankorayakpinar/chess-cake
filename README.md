@@ -10,6 +10,8 @@
 
 - Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
 
+- Mat olan konumlar için, sadece "Konum" çıktısının alınması sağlanmıştır.
+
 ***
 
 # 1. En iyi hamle
@@ -19,8 +21,6 @@
 - Standart notasyondan farklı olarak, mesela "e4" yerine "e2e4" şeklinde çıktılar alınmaktadır.
 
 - Hamle hesabı esnasında, "en passant" ve "rok" gibi özel hamleler de algılanabilmektedir.
-
-- Mat olan konumlar için, sadece "Konum" çıktısının alınması sağlanmıştır.
 
 ***
 
