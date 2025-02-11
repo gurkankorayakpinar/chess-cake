@@ -12,7 +12,7 @@
 
 - Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
 
-- Mat olan konumlar için, sadece "Konum" çıktısının alınması sağlanmış olup; "Kazanma olasılığı" gibi diğer çıktıların alınması engellenmiştir.
+- Mat olan konumlarda, "Konum" dışındaki diğer çıktıların alınması engellenmiştir.
 
 ***
 
