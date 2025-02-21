@@ -4,10 +4,6 @@
 
 ***
 
-- Projenin çalıştırılabilmesi için; Stockfish programının proje klasörü içerisinde yer alması, klasör isminin "stockfish" ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
-
-***
-
 # 1. En iyi hamle
 
 - Hesaplama süresi "5 saniye" olarak belirlenmiştir.
@@ -37,6 +33,8 @@
 - Gerçekçi bir olasılık hesabı için, sigmoid büyüme eğrisindeki "k" sabiti "0.4" olarak ayarlanmıştır.
 
 ***
+
+- Projenin çalıştırılabilmesi için; Stockfish programının proje klasörü içerisinde yer alması, klasör isminin "stockfish" ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
 
 - FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
 
