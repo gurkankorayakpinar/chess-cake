@@ -6,14 +6,6 @@
 
 - Projenin çalıştırılabilmesi için; Stockfish programının proje klasörü içerisinde yer alması, klasör isminin "stockfish" ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
 
-- FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu ("white" veya "black") gösterir. Dolayısıyla, FEN kodunun incelenebilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
-
-- FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
-
-- Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
-
-- Mat olan konumlarda, "Konum" dışındaki diğer çıktıların alınması engellenmiştir.
-
 ***
 
 # 1. En iyi hamle
@@ -43,6 +35,16 @@
 - Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır.
 
 - Gerçekçi bir olasılık hesabı için, sigmoid büyüme eğrisindeki "k" sabiti "0.4" olarak ayarlanmıştır.
+
+***
+
+- FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
+
+- FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu ("white" veya "black") gösterir. Dolayısıyla, FEN kodunun incelenebilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
+
+- Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
+
+- Mat olan konumlarda, "Konum" dışındaki diğer çıktıların alınması engellenmiştir.
 
 ***
 ***
