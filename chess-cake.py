@@ -17,7 +17,7 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
         print("Hatalı FEN kodu yazdınız!")
         return None
 
-    # Stockfish motorunu başlat.
+    # Stockfish motorunu başlat
     with chess.engine.SimpleEngine.popen_uci(stockfish_path) as engine:
         # En iyi hamleyi bul (5 saniye)
         best_move_result = engine.play(board, chess.engine.Limit(time=5.0))
@@ -33,11 +33,13 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
             evaluation = "Mat!" if mate_moves == 0 else f"{mate_moves} hamlede mat!"
             win_rate = 100  # Mat pozisyonlarında kazanç garantili
 
-            # Eğer hemen mat varsa, "Oyun bitti!" yaz
+            # Eğer hemen mat varsa, sadece evaluation ve win_rate dön
             if mate_moves == 0:
-                best_move = "Oyun bitti!"
-                # Only print the position when the game is checkmated
-                return evaluation, win_rate  # Return only evaluation and win_rate
+                return evaluation, win_rate
+            # X hamlede mat varsa, diğer bilgileri de ekle
+            else:
+                turn_side = "Siyah" if " b " in fen else "Beyaz"
+                return best_move, evaluation, win_rate, turn_side
         else:
             # Skoru yüzdelik hale getir
             evaluation = score.score() / 100.0  # Convert centipawns to pawn units
@@ -55,19 +57,23 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
 
         return best_move, evaluation, win_rate, turn_side
 
-# Örnek FEN kodu
-fen_code = "r1bqk2r/pppp1Bpp/2n2n2/2b1p1N1/4P3/8/PPPP1PPP/RNBQK2R b KQkq - 0 5"
+# Kullanıcıdan FEN kodunu al
+fen_code = input("FEN kodunu yapıştır (sağ tık): ")
 
 result = analyze_fen(fen_code)
 
 if result:
-    if len(result) == 2:  # Game is checkmated, only print position.
+    if len(result) == 2:  # Oyun anında mat ile bittiyse sadece pozisyonu yazdır
         evaluation, win_rate = result
         print(f"Konum: {evaluation}")
-    else:
+    else:  # X hamlede mat veya normal pozisyon, tüm bilgileri yazdır
         best_move, evaluation, win_rate, turn_side = result
+        print("")
         print(f"Konum: {evaluation}")
+        print("")
         print(f"Kazanma olasılığı: %{win_rate}")
-        print("*")
+        print("")
         print(f"Hamle sırası: {turn_side}")
+        print("")
         print(f"En iyi hamle: {best_move}")
+        print("")
