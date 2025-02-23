@@ -1,4 +1,3 @@
-import chess
 import chess.engine
 import os
 import math

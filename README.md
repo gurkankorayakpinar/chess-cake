@@ -36,7 +36,7 @@
 
 - Projenin çalıştırılabilmesi için; Stockfish programının proje klasörü içerisinde yer alması, klasör isminin "stockfish" ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
 
-- FEN kodunun yorumlanabilmesi için `python-chess` modülü kullanılmıştır.
+- FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
 
 - FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu ("white" veya "black") gösterir. Dolayısıyla, FEN kodunun incelenebilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
 
