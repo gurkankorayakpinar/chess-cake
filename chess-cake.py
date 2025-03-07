@@ -33,7 +33,7 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
             evaluation = "Mat!" if mate_moves == 0 else f"{mate_moves} hamlede mat!"
             win_rate = 100  # Mat garantisi varsa, kazanç olasılığı %100 olarak gösterilir.
 
-            # Eğer konum "mat" ise, sadece evaluation ve win_rate (?) dön - (bu kısım düzeltilebilir)
+            # Eğer konum "mat" ise, sadece evaluation ve win_rate (?) return et. - (Bu kısım düzeltilebilir.)
             if mate_moves == 0:
                 return evaluation, win_rate
             # X hamlede mat varsa, diğer bilgileri de göster.
