@@ -1,6 +1,20 @@
 # Chess cake
 
-- Bu projede, FEN kodu verilen bir oyundaki en iyi hamle hesaplanmakta olup; ayrıca, konum puanı ve önde olan tarafın kazanç olasılığı da gösterilmektedir.
+- Bu projede, FEN kodu verilen bir oyundaki en iyi hamle, konum puanı ve önde olan tarafın kazanç olasılığı gösterilmektedir.
+
+***
+
+- Projenin çalıştırılabilmesi için; Stockfish programının "stockfish" isimli klasör içerisinde yer alması ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
+
+- FEN kodu için "input" sistemi mevcuttur.
+
+- FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
+
+- FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu ("white" veya "black") gösterir. Dolayısıyla, FEN kodunun incelenebilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
+
+- Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
+
+- Mat olan konumlarda, "Konum" dışındaki diğer çıktıların alınması engellenmiştir.
 
 ***
 
@@ -22,7 +36,7 @@
 
 - Sonucun "eksi" çıkması, siyah taşların avantajlı olduğunu gösterir.
 
-- Kaçınılmaz mat (unavoidable mat) konumlarında, mesela "4 hamlede mat!" gibi çıktılar alınmaktadır ve bu sonuçlarda "negatif sayı" yoktur.
+- Kaçınılmaz mat (unavoidable mat) konumlarında, mesela "4 hamlede mat!" gibi çıktılar alınmaktadır ve bu çıktılarda "negatif sayı" yoktur.
 
 ***
 
@@ -31,20 +45,6 @@
 - Kazanç olasılığı için "sigmoid büyüme eğrisi" kullanılmıştır.
 
 - Gerçekçi bir olasılık hesabı için, sigmoid büyüme eğrisindeki "k" sabiti "0.4" olarak ayarlanmıştır.
-
-***
-
-- Projenin çalıştırılabilmesi için; Stockfish programının proje klasörü içerisinde yer alması, klasör isminin "stockfish" ve "executable file" isminin de "stockfish.exe" şeklinde olması gerekmektedir.
-
-- FEN kodu için "input" sistemi mevcuttur.
-
-- FEN kodunun yorumlanabilmesi için `chess` modülü kullanılmıştır.
-
-- FEN kodundaki "w" veya "b" harfleri, hamle sırasının hangi oyuncuda olduğunu ("white" veya "black") gösterir. Dolayısıyla, FEN kodunun incelenebilmesi için hamle sırasının beyaz taşlarda olması şart değildir.
-
-- Hatalı FEN kodu girilmesi durumunda, "hata mesajı" alınması sağlanmıştır.
-
-- Mat olan konumlarda, "Konum" dışındaki diğer çıktıların alınması engellenmiştir.
 
 ***
 ***
