@@ -46,6 +46,8 @@
 
 - Gerçekçi bir olasılık hesabı için, sigmoid büyüme eğrisindeki "k" sabiti "0.4" olarak ayarlanmıştır.
 
+- Kaçınılmaz mat (unavoidable mat) konumuna gelindiyse, artık kazanç olasılığı gösterilmez.
+
 ***
 ***
 ***

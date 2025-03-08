@@ -2,7 +2,7 @@ import chess.engine
 import os
 import math
 
-# Stockfish programının konumu ve "executable file" ismi
+# Stockfish klasörünün tanımlanması ve "executable file" ismi
 stockfish_path = os.path.join(os.getcwd(), "stockfish", "stockfish.exe")
 
 def evaluation_to_win_probability(evaluation):
@@ -30,16 +30,11 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
         # Mat kontrolü
         if score.is_mate():
             mate_moves = abs(score.mate())
-            evaluation = "Mat!" if mate_moves == 0 else f"{mate_moves} hamlede mat!"
-            win_rate = 100  # Mat garantisi varsa, kazanç olasılığı %100 olarak gösterilir.
-
-            # Eğer konum "mat" ise, sadece evaluation ve win_rate (?) return et. - (Bu kısım düzeltilebilir.)
             if mate_moves == 0:
-                return evaluation, win_rate
-            # X hamlede mat varsa, diğer bilgileri de göster.
+                return "Mat!"  # Eğer oyun bittiyse
             else:
-                turn_side = "Siyah" if " b " in fen else "Beyaz"
-                return best_move, evaluation, win_rate, turn_side
+                evaluation = f"{mate_moves} hamlede mat!"
+                win_rate = None  # Kaçınılmaz mat (unavoidable mat) konumuna gelindiyse, artık kazanç olasılığı gösterilmez.
         else:
             # Skoru yüzdelik hale getir
             evaluation = score.score() / 100.0  # Convert centipawns to pawn units
@@ -49,8 +44,11 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
             # Kazanç olasılığını hesapla.
             win_rate = evaluation_to_win_probability(evaluation)
 
-            # Yüzdelik hâle getir ve tam sayı yap
+            # Yüzdelik hâle getir ve tam sayı yap.
             win_rate = int(round(win_rate * 100))
+
+            # Mat garantisi yoksa, kazanma olasılığı en fazla %99 olarak gösterilir.
+            win_rate = min(win_rate, 99)
 
         # Sıra kimde?
         turn_side = "Siyah" if " b " in fen else "Beyaz"
@@ -63,10 +61,20 @@ fen_code = input("FEN kodunu yapıştır (sağ tık): ")
 result = analyze_fen(fen_code)
 
 if result:
-    if len(result) == 2:  # Konum "mat" ise, sadece konum puanını göster.
-        evaluation, win_rate = result
+    if isinstance(result, str):  # Eğer oyun bittiyse
+        print("")
+        print(f"Konum: {result}")
+        print("")
+    elif isinstance(result[1], str) and "hamlede mat" in result[1]:  # Kaçınılmaz mat (unavoidable mat) durumu varsa
+        best_move, evaluation, win_rate, turn_side = result
+        print("")
         print(f"Konum: {evaluation}")
-    else:  # X hamlede mat veya normal pozisyon için tüm bilgiler gösterilir.
+        print("")
+        print(f"Hamle sırası: {turn_side}")
+        print("")
+        print(f"En iyi hamle: {best_move}")
+        print("")
+    else:  # Henüz kesin kazanç oluşmadan durumlar için
         best_move, evaluation, win_rate, turn_side = result
         print("")
         print(f"Konum: {evaluation}")
