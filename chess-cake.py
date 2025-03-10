@@ -2,7 +2,7 @@ import chess.engine
 import os
 import math
 
-# Stockfish klasörünün tanımlanması ve "executable file" ismi
+# Stockfish klasörünün konumu ve "executable file" ismi
 stockfish_path = os.path.join(os.getcwd(), "stockfish", "stockfish.exe")
 
 def evaluation_to_win_probability(evaluation):
@@ -36,7 +36,7 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
                 evaluation = f"{mate_moves} hamlede mat!"
                 win_rate = None  # Kaçınılmaz mat (unavoidable mat) konumuna gelindiyse, artık kazanç olasılığı gösterilmez.
         else:
-            # Skoru yüzdelik hale getir
+            # Skoru yüzdelik hâle getir
             evaluation = score.score() / 100.0  # Convert centipawns to pawn units
             if board.turn == chess.BLACK:
                 evaluation = -evaluation
@@ -74,7 +74,7 @@ if result:
         print("")
         print(f"En iyi hamle: {best_move}")
         print("")
-    else:  # Henüz kesin kazanç oluşmadan durumlar için
+    else:  # Normal konumlar için
         best_move, evaluation, win_rate, turn_side = result
         print("")
         print(f"Konum: {evaluation}")
