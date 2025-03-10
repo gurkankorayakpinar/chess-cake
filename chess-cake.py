@@ -56,7 +56,7 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
         return best_move, evaluation, win_rate, turn_side
 
 # Kullanıcıdan FEN kodunu al.
-fen_code = input("FEN kodunu yapıştır (sağ tık): ")
+fen_code = input("FEN kodunu (sağ tık ile) yapıştır: ")
 
 result = analyze_fen(fen_code)
 
