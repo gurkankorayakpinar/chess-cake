@@ -34,7 +34,7 @@ def analyze_fen(fen, stockfish_path=stockfish_path):
                 return "Mat!"  # Eğer oyun bittiyse
             else:
                 evaluation = f"{mate_moves} hamlede mat!"
-                win_rate = None  # Kaçınılmaz mat (unavoidable mat) konumuna gelindiyse, artık kazanç olasılığı gösterilmez.
+                win_rate = None  # Kaçınılmaz mat (unavoidable mat) konumuna gelindiyse, artık "kazanç olasılığı" gösterilmez.
         else:
             # Skoru yüzdelik hâle getir
             evaluation = score.score() / 100.0  # Convert centipawns to pawn units
@@ -74,7 +74,7 @@ if result:
         print("")
         print(f"En iyi hamle: {best_move}")
         print("")
-    else:  # Normal konumlar için
+    else:  # Normal konum
         best_move, evaluation, win_rate, turn_side = result
         print("")
         print(f"Konum: {evaluation}")
